@@ -23,4 +23,17 @@ router.post('/add-post', (req, res, next) => {
 	db.close();
 });
 
+router.get('/view-posts', (req, res, next) => {
+	const stmt = `SELECT title, date, author, post FROM ${config.tableName}`;
+	db.serialize(() => {
+		db.all(stmt, (err, rows) => {
+			if (err) {
+				console.log(chalk.red('Couldn\'t read the row data'));
+			} else {
+				res.render('view-posts', {posts:rows});
+			}
+		});
+	});
+});
+
 module.exports = router;

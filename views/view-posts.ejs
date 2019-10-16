@@ -1,0 +1,5 @@
+<% for (let i=0; i<posts.length; i++) { %>
+	<h1><%= posts[i].title %></h1>
+	<p>By <strong><%= posts[i].author %></strong> on <em><%= posts[i].date %></em></p>
+	<p><%= posts[i].post %></p>
+<% } %>
