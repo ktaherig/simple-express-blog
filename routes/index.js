@@ -4,6 +4,8 @@ const config = require('../config');
 const chalk = require('chalk');
 const sqlite3 = require('sqlite3').verbose();
 
+const db = new sqlite3.Database(config.databaseName);
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
